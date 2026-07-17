@@ -1,0 +1,2 @@
+# for project structure generation
+cookiecutter
