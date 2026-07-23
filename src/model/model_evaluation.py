@@ -15,7 +15,7 @@ load_dotenv()
 
 repo_owner = os.getenv("DAGSHUB_USERNAME")
 repo_name = os.getenv("DAGSHUB_REPO")
-token = os.getenv("DAGSHUB_TOKEN")
+token = os.getenv("MLOPS_DAGSHUB_TOKEN")
 
 os.environ["MLFLOW_TRACKING_USERNAME"] = token
 os.environ["MLFLOW_TRACKING_PASSWORD"] = token

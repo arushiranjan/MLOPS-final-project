@@ -11,28 +11,33 @@ import warnings
 warnings.simplefilter("ignore", UserWarning)
 warnings.filterwarnings("ignore")
 
-# Below code block is for production use
+from dotenv import load_dotenv
+
+load_dotenv()
+
+repo_owner = os.getenv("DAGSHUB_USERNAME")
+repo_name = os.getenv("DAGSHUB_REPO")
+token = os.getenv("MLOPS_DAGSHUB_TOKEN")
+
+os.environ["MLFLOW_TRACKING_USERNAME"] = token
+os.environ["MLFLOW_TRACKING_PASSWORD"] = token
+
+dagshub.init(
+    repo_owner=repo_owner,
+    repo_name=repo_name,
+    mlflow=True,
+)
+
+mlflow.set_tracking_uri(
+    f"https://dagshub.com/{repo_owner}/{repo_name}.mlflow"
+)
 # -------------------------------------------------------------------------------------
-# Set up DagsHub credentials for MLflow tracking
-# dagshub_token = os.getenv("CAPSTONE_TEST")
-# if not dagshub_token:
-#     raise EnvironmentError("CAPSTONE_TEST environment variable is not set")
-
-# os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
-# os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
-
-# dagshub_url = "https://dagshub.com"
-# repo_owner = "vikashdas770"
-# repo_name = "YT-Capstone-Project"
-# # Set up MLflow tracking URI
-# mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
-# -------------------------------------------------------------------------------------
 
 
-# Below code block is for local use
-# -------------------------------------------------------------------------------------
-mlflow.set_tracking_uri('https://dagshub.com/arushiranjan/MLOPS-final-project.mlflow')
-dagshub.init(repo_owner='arushiranjan', repo_name='MLOPS-final-project', mlflow=True)
+# # Below code block is for local use
+# # -------------------------------------------------------------------------------------
+# mlflow.set_tracking_uri('https://dagshub.com/arushiranjan/MLOPS-final-project.mlflow')
+# dagshub.init(repo_owner='arushiranjan', repo_name='MLOPS-final-project', mlflow=True)
 # -------------------------------------------------------------------------------------
 
 

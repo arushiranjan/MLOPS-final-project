@@ -37,6 +37,8 @@ jobs:
       - name: run pipeline
         env:
           S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
-          CAPSTONE_TEST: ${{ secrets.MLOPS_DAGSHUB_TOKEN }}
+          MLOPS_DAGSHUB_TOKEN: ${{ secrets.MLOPS_DAGSHUB_TOKEN }}
+          DAGSHUB_USERNAME: ${{ secrets.DAGSHUB_USERNAME }}
+          DAGSHUB_REPO: ${{ secrets.DAGSHUB_REPO }}
         run: |
           dvc repro
