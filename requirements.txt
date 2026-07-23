@@ -188,3 +188,4 @@ xgboost==1.7.6
 
 awscli
 dvc[s3]
+python-dotenv==1.0.1
