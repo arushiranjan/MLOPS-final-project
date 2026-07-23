@@ -220,5 +220,5 @@ __marimo__/
 credentials.txt
 local_s3/
 notebooks/
-data/
+# data/ if this is ignored, then while running ci pipeline, it won't find data_ingestion.py file and will throw error. So, we are not ignoring data/ folder
 models/   
