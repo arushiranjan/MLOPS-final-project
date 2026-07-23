@@ -185,3 +185,6 @@ xgboost==1.7.6
 
 # to install local packages
 -e .
+
+awscli
+dvc[s3]
