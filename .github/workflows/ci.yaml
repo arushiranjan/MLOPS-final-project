@@ -29,6 +29,7 @@ jobs:
 
       - name: run pipeline
         env:
+          S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
           CAPSTONE_TEST: ${{ secrets.MLOPS_DAGSHUB_TOKEN }}
         run: |
           dvc repro
