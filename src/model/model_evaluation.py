@@ -6,25 +6,22 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_a
 import logging
 import mlflow
 import mlflow.sklearn
-import dagshub
 from src.logger import logging
 import os
-from dotenv import load_dotenv
 
+# for local deployment, env gets loaded from .env file, but not required for github actions, as env variables are set in the workflow file
+from dotenv import load_dotenv
 load_dotenv()
 
 repo_owner = os.getenv("DAGSHUB_USERNAME")
 repo_name = os.getenv("DAGSHUB_REPO")
 token = os.getenv("MLOPS_DAGSHUB_TOKEN")
 
+if not token:
+    raise EnvironmentError("MLOPS_DAGSHUB_TOKEN is not set")
+
 os.environ["MLFLOW_TRACKING_USERNAME"] = token
 os.environ["MLFLOW_TRACKING_PASSWORD"] = token
-
-dagshub.init(
-    repo_owner=repo_owner,
-    repo_name=repo_name,
-    mlflow=True,
-)
 
 mlflow.set_tracking_uri(
     f"https://dagshub.com/{repo_owner}/{repo_name}.mlflow"
