@@ -43,7 +43,6 @@ jobs:
         run: |
           dvc repro
 
-
       - name: Run model tests
         env:
           MLOPS_DAGSHUB_TOKEN: ${{ secrets.MLOPS_DAGSHUB_TOKEN }}
