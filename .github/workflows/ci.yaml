@@ -110,6 +110,7 @@ jobs:
             --from-literal=DAGSHUB_USERNAME=${{ secrets.DAGSHUB_USERNAME }} \
             --from-literal=DAGSHUB_REPO=${{ secrets.DAGSHUB_REPO }} \
             --dry-run=client -o yaml | kubectl apply -f -
-            - name: Deploy to EKS
-              run: |
-                kubectl apply -f deployment.yaml
+            
+      - name: Deploy to EKS
+        run: |
+          kubectl apply -f deployment.yaml
